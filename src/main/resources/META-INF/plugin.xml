@@ -1,40 +1,12 @@
 <idea-plugin>
     <id>ArthasHotSwap</id>
-    <name>ArthasHotSwap</name>
+    <name>ArthasHotSwap_cleanVersion</name>
     <vendor email="xxxtai@163.com" url="https://github.com/xxxtai/ArthasHotSwap">moda</vendor>
-    <description><![CDATA[
-
-	<h1> ArthasHotSwap </h1>
-	<a href="https://github.com/xxxtai/ArthasHotSwap/blob/master/README-CN.md"><img src="https://xxxtai.oss-cn-beijing.aliyuncs.com/picture/readme-cn.png" > </a>
-	<a href="https://github.com/xxxtai/ArthasHotSwap/blob/master/README.md"><img src="https://xxxtai.oss-cn-beijing.aliyuncs.com/picture/readme-en.png" > </a>
-	<a href="https://github.com/xxxtai/ArthasHotSwap/releases"><img src="https://xxxtai.oss-cn-beijing.aliyuncs.com/picture/release.png" > </a>
-	<a href="https://github.com/alibaba/arthas"><img src="https://xxxtai.oss-cn-beijing.aliyuncs.com/picture/arthas.png" > </a>
-	<h2>Abstract</h2>
-    <p>Sometimes, when you're making minor changes to your code, you want to immediately see how they will behave in a working application without shutting down the process. As we all know, hot swap can be achieved through debugging. But in some cases, the debugging port is restricted due to permission control, then you will not be able to achieve HotSwap through debugging.
-		The IntelliJ IDEA plugin introduced in this article can help implement hot swap on a remote server, and the operation is simple and fast. The plugin in this article is based on Arths redefine command.
-	</p>
-	<h2>HotSwap steps</h2>
-	<h3> Firstly, Compile the entire project </h3>
-	<p>
-		HotSwap uses bytecode files, so first, we need to compile related projects, in the future, we can only compile the modified files to save time.
-	</p>
-	<h3>Secondly, Implementation of ArthasHotSwap</h3>
-	<p>
-		Find the files(.java or .class) that need to be modified by HotSwap, right click in the IDEA, choose “ArthasHotSwap” and click “Swap this class”. When the plugin is successfully executed in the background, the plugin will copy the command required for HowSwap to the pasteboard.
-	</p>
-	<h3>Thirdly, Log in and execute command</h3>
-	<p>
-		Next you need to log in to your remote server, then paste the command form the clipboard and execute it with administrator privileges. If the first execution fails, please execute again. Due to the need for Alibaba Cloud OSS as a medium to transfer bytecode files, your remote server needs to be able to access to the Alibaba Cloud Server.
-	</p>
-
-
-
-    ]]></description>
+    <description> hot swap class .................................................</description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
-    <depends>com.intellij.modules.platform</depends>
-    <depends>com.xxxtai.coding.SmartInputSourceIntelliJ</depends>
+    <depends>com.intellij.modules.lang</depends>
     
     <idea-version since-build="213"  until-build="223.*"/>
 
@@ -56,16 +28,18 @@
     <actions>
         <action id="swapClassAction"
                 class="com.xxxtai.arthas.action.SwapClassAction"
-                text="Swap This Class"
+                text="Hot Swap File"
                 description="arthas hotswap">
+            <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="$Paste"/>
         </action>
 
-        <group id="arthas-hot-swap-plugin" popup="true"
-               text="ArthasHotSwap"
-               icon="PluginIcons.HOT_16_16">
-            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="CopyReference"/>
-            <separator/>
-            <reference ref="swapClassAction"/>
-        </group>
+
+<!--        <group id="arthas-hot-swap-plugin" popup="true"-->
+<!--               text="ArthasHotSwap"-->
+<!--               icon="PluginIcons.HOT_16_16">-->
+
+<!--            <separator/>-->
+<!--            <reference ref="swapClassAction"/>-->
+<!--        </group>-->
     </actions>
 </idea-plugin>
