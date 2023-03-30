@@ -115,15 +115,7 @@ public class SwapClassAction extends AnAction {
     private void notifyResult(Project project, ClassInfo currentClassInfo, String command) throws Exception {
         MyToolWindow.consoleLog(currentClassInfo.toString());
         MyToolWindow.consoleLog(String.format(TipConstants.SUCCESS_CONSOLE_TIP_TEMPLATE, command));
-
-        String tip = getTipFromUrl(TipConstants.SUCCESS);
-        if (StringUtils.isNotBlank(tip)) {
-            NotifyUtil.notifyMessage(project, tip);
-            return;
-        }
-
-        NotifyUtil.notifyMessage(project,
-            "Arthas Hot Swap Tip : the command of hot swap has been copied to the clipboard, go to the host to execute the command");
+        NotifyUtil.notifyMessage(project, TipConstants.SUCCESS);
     }
 
     private String generateEncryptKey(Project project, String keyWord) {
@@ -218,15 +210,4 @@ public class SwapClassAction extends AnAction {
         return s.replace(hotSwapScript4OneClass);
     }
 
-    private static String getTipFromUrl(String urlStr) throws IOException {
-        URL url = new URL(urlStr);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), CHARSET_NAME));
-        StringBuilder builder = new StringBuilder();
-        String s;
-        while ((s = reader.readLine()) != null) {
-            builder.append(s);
-        }
-        reader.close();
-        return builder.toString();
-    }
 }
