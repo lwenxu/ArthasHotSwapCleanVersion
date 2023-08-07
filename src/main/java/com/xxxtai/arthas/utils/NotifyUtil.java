@@ -13,7 +13,7 @@ public class NotifyUtil {
 
     public static void notifyMessage(Project project, String message) {
         NotificationGroupManager.getInstance().getNotificationGroup("ArthasHotSwap")
-            .createNotification(message, NotificationType.INFORMATION)
+            .createNotification("热部署插件",message, NotificationType.INFORMATION)
             .notify(project);
     }
 

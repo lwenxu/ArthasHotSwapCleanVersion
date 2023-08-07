@@ -33,7 +33,7 @@ intellij {
 tasks {
     patchPluginXml {
         sinceBuild("213")
-        untilBuild("231.*")
+        untilBuild("232.*")
     }
 }
 
