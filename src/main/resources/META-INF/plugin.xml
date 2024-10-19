@@ -14,7 +14,7 @@
         https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions
         !!!!   不要修改这里  这里改了也不生效 需要修改 gradle 里面的配置 build.gradle
     -->
-    <idea-version since-build="232"  until-build="232.*"/>
+    <idea-version since-build="232"  until-build="233.*"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable parentId="tools" instance="com.xxxtai.arthas.dialog.SettingDialog"

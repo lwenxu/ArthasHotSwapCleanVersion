@@ -23,17 +23,17 @@ dependencies {
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
+// 每次修改 intellij 中的版本号直接用当前的，untilBuild 用当前的 * ， plugin 中也用当前的 *
+
 intellij {
-    version("2022.2.1")
-//    version.set("2022.2.1")
-//    type.set("IC") // Target IDE Platform
+    version("2023.3.8")
 }
 
 
 tasks {
     patchPluginXml {
         sinceBuild("213")
-        untilBuild(".*")
+        untilBuild("233.*")
     }
 }
 
